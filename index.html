@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioReforço - Reforço Escolar de Ciências e Biologia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --primary-light: #4CAF50;
+            --secondary: #1565C0;
+            --accent: #FF9800;
+            --text-dark: #333;
+            --text-light: #666;
+            --background: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #0D47A1;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-accent:hover {
+            background: #F57C00;
+        }
+
+        /* Grade de Séries */
+        .grades {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .grade-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .grade-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .grade-content {
+            padding: 1.5rem;
+        }
+
+        .grade-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .grade-content li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .grade-content li:last-child {
+            border-bottom: none;
+        }
+
+        /* Módulos */
+        .modules {
+            background: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .modules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .module-image {
+            height: 180px;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-image::after {
+            content: "Conteúdo Protegido";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .module-content {
+            padding: 1.5rem;
+        }
+
+        .module-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .module-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            min-height: 80px;
+        }
+
+        .module-topics {
+            margin: 1rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .module-topics li {
+            margin-bottom: 0.5rem;
+        }
+
+        .module-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .copyright-notice {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Área de Materiais de Amostra */
+        .sample-materials {
+            padding: 4rem 2rem;
+            background: var(--background);
+        }
+
+        .sample-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sample-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sample-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .sample-content {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .sample-content h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .references {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .references h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+        }
+
+        .protection-notice {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .modal p {
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🧬</span>
+                <h1>BioReforço</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#grades">Séries</a></li>
+                    <li><a href="#modules">Módulos</a></li>
+                    <li><a href="#samples">Amostras</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Área do Aluno</button>
+                <button class="btn btn-primary">Comprar Módulo</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Reforço Escolar de Ciências e Biologia</h2>
+            <p>Materiais didáticos exclusivos e protegidos para estudantes do 6º ano ao Ensino Médio. Conteúdo original com referências acadêmicas.</p>
+            <button class="btn btn-accent">Ver Módulos Disponíveis</button>
+        </div>
+    </section>
+
+    <!-- Grade de Séries -->
+    <section class="grades" id="grades">
+        <h2 class="section-title">Séries Atendidas</h2>
+        <div class="grades-grid">
+            <!-- Ensino Fundamental II -->
+            <div class="grade-card">
+                <div class="grade-header">
+                    <h3>Ensino Fundamental II</h3>
+                </div>
+                <div class="grade-content">
+                    <ul>
+                        <li><strong>6º Ano</strong> - Ciências</li>
+                        <li><strong>7º Ano</strong> - Ciências</li>
+                        <li><strong>8º Ano</strong> - Ciências</li>
+                        <li><strong>9º Ano</strong> - Ciências</li>
+                    </ul>
+                    <button class="btn btn-primary">Ver Materiais</button>
+                </div>
+            </div>
+
+            <!-- Ensino Médio -->
+            <div class="grade-card">
+                <div class="grade-header">
+                    <h3>Ensino Médio</h3>
+                </div>
+                <div class="grade-content">
+                    <ul>
+                        <li><strong>1ª Série</strong> - Biologia</li>
+                        <li><strong>2ª Série</strong> - Biologia</li>
+                        <li><strong>3ª Série</strong> - Biologia</li>
+                    </ul>
+                    <button class="btn btn-primary">Ver Materiais</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Módulos -->
+    <section class="modules" id="modules">
+        <div class="modules-container">
+            <h2 class="section-title">Módulos Disponíveis</h2>
+            <div class="modules-grid">
+                <!-- Módulo 6º Ano -->
+                <div class="module-card">
+                    <div class="module-image">
+                        🌍
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">6º Ano - Terra e Universo</h3>
+                        <p class="module-description">Compreenda nosso planeta, sistema solar e universo com explicações claras e atividades práticas.</p>
+                        <ul class="module-topics">
+                            <li>Sistema Solar e Planetas</li>
+                            <li>Camadas da Terra</li>
+                            <li>Fenômenos Atmosféricos</li>
+                            <li>Estações do Ano</li>
+                        </ul>
+                        <div class="module-price">R$ 24,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 7º Ano -->
+                <div class="module-card">
+                    <div class="module-image">
+                        🔬
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">7º Ano - Seres Vivos e Classificação</h3>
+                        <p class="module-description">Explore a diversidade da vida e aprenda a classificar os seres vivos de forma sistemática.</p>
+                        <ul class="module-topics">
+                            <li>Características dos Seres Vivos</li>
+                            <li>Reinos Biológicos</li>
+                            <li>Classificação Taxonômica</li>
+                            <li>Vírus, Bactérias e Protistas</li>
+                        </ul>
+                        <div class="module-price">R$ 27,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 8º Ano -->
+                <div class="module-card">
+                    <div class="module-image">
+                        ❤️
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">8º Ano - Corpo Humano e Saúde</h3>
+                        <p class="module-description">Conheça os sistemas do corpo humano, suas funções e como manter a saúde.</p>
+                        <ul class="module-topics">
+                            <li>Sistema Digestório e Nutrição</li>
+                            <li>Sistema Respiratório</li>
+                            <li>Sistema Circulatório</li>
+                            <li>Saúde e Prevenção de Doenças</li>
+                        </ul>
+                        <div class="module-price">R$ 29,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 9º Ano -->
+                <div class="module-card">
+                    <div class="module-image">
+                        ⚡
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">9º Ano - Química da Vida</h3>
+                        <p class="module-description">Entenda os fundamentos químicos dos seres vivos e as transformações da matéria.</p>
+                        <ul class="module-topics">
+                            <li>Átomos, Moléculas e Células</li>
+                            <li>Substâncias Orgânicas e Inorgânicas</li>
+                            <li>Fotossíntese e Respiração</li>
+                            <li>Genética Básica</li>
+                        </ul>
+                        <div class="module-price">R$ 32,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 1ª Série EM -->
+                <div class="module-card">
+                    <div class="module-image">
+                        🧬
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">1ª Série - Biologia Celular</h3>
+                        <p class="module-description">Aprofunde-se na estrutura e funcionamento das células, base da vida.</p>
+                        <ul class="module-topics">
+                            <li>Estrutura e Função Celular</li>
+                            <li>Metabolismo Energético</li>
+                            <li>Divisão Celular (Mitose e Meiose)</li>
+                            <li>DNA e Síntese Proteica</li>
+                        </ul>
+                        <div class="module-price">R$ 34,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 2ª Série EM -->
+                <div class="module-card">
+                    <div class="module-image">
+                        🌱
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">2ª Série - Biologia dos Organismos</h3>
+                        <p class="module-description">Estude anatomia, fisiologia e a diversidade dos seres vivos.</p>
+                        <ul class="module-topics">
+                            <li>Histologia Animal e Vegetal</li>
+                            <li>Sistemas do Corpo Humano</li>
+                            <li>Botânica e Fisiologia Vegetal</li>
+                            <li>Zoologia e Classificação Animal</li>
+                        </ul>
+                        <div class="module-price">R$ 37,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Módulo 3ª Série EM -->
+                <div class="module-card">
+                    <div class="module-image">
+                        🧪
+                    </div>
+                    <div class="module-content">
+                        <h3 class="module-title">3ª Série - Biologia Avançada e Evolução</h3>
+                        <p class="module-description">Prepare-se para vestibulares com genética, evolução e ecologia.</p>
+                        <ul class="module-topics">
+                            <li>Genética e Biotecnologia</li>
+                            <li>Evolução e Seleção Natural</li>
+                            <li>Ecologia e Sustentabilidade</li>
+                            <li>Preparação para Vestibulares</li>
+                        </ul>
+                        <div class="module-price">R$ 39,90</div>
+                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="copyright-notice">
+                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amostras de Conteúdo -->
+    <section class="sample-materials" id="samples">
+        <div class="sample-container">
+            <h2 class="section-title">Amostra de Conteúdo Original</h2>
+            
+            <div class="sample-card">
+                <h3>6º Ano - Amostra: Sistema Solar</h3>
+                <div class="sample-content">
+                    <h4>Os Planetas do Sistema Solar</h4>
+                    <p>O Sistema Solar é composto por oito planetas que orbitam ao redor do Sol. Estes são divididos em planetas rochosos (Mercúrio, Vênus, Terra e Marte) e gasosos (Júpiter, Saturno, Urano e Netuno).</p>
+                    <p>Cada planeta possui características únicas relacionadas à sua composição, atmosfera, satélites naturais e condições de temperatura.</p>
+                </div>
+                <div class="references">
+                    <h4>Referências Bibliográficas:</h4>
+                    <ul>
+                        <li>CARMO, B. H. do. <em>Ciências: Entender e Descobrir</em>. São Paulo: Editora do Brasil, 2021.</li>
+                        <li>NASA. Solar System Exploration. Disponível em: https://solarsystem.nasa.gov</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sample-card">
+                <h3>1ª Série EM - Amostra: Células Eucariontes</h3>
+                <div class="sample-content">
+                    <h4>Estrutura das Células Eucariontes</h4>
+                    <p>As células eucariontes caracterizam-se pela presença de núcleo individualizado e diversas organelas com funções especializadas. A membrana plasmática controla a entrada e saída de substâncias, enquanto o citoplasma abriga as organelas.</p>
+                    <p>As mitocôndrias são responsáveis pela produção de energia, o retículo endoplasmático atua na síntese de proteínas e lipídios, e o complexo golgiense processa e encaminha substâncias para diferentes partes da célula.</p>
+                </div>
+                <div class="references">
+                    <h4>Referências Bibliográficas:</h4>
+                    <ul>
+                        <li>AMABIS, J. M.; MARTHO, G. R. <em>Biologia das Células</em>. São Paulo: Moderna, 2020.</li>
+                        <li>LOPES, S.; ROSSO, S. <em>Bio - Volume 1</em>. São Paulo: Saraiva, 2019.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>BioReforço</h3>
+                <p>Reforço escolar especializado em Ciências e Biologia para estudantes do 6º ano ao Ensino Médio. Conteúdo original e protegido.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#grades">Séries</a></li>
+                    <li><a href="#modules">Módulos</a></li>
+                    <li><a href="#samples">Amostras</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@bioreforco.com</li>
+                    <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                    <li><i class="fab fa-whatsapp"></i> (11) 99999-9999</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 BioReforço. Todos os direitos reservados. Conteúdo protegido por leis de direitos autorais.</p>
+        </div>
+        <div class="protection-notice">
+            <i class="fas fa-shield-alt"></i> Este site possui proteção contra cópia não autorizada
+        </div>
+    </footer>
+
+    <!-- Modal de Proteção -->
+    <div class="modal" id="protectionModal">
+        <div class="modal-content">
+            <h3>Conteúdo Protegido</h3>
+            <p>Os materiais do BioReforço são protegidos por direitos autorais e não podem ser copiados, distribuídos ou reproduzidos sem autorização.</p>
+            <p>Para adquirir nossos módulos, entre em contato ou faça sua compra através do site.</p>
+            <button class="close-modal">Entendi</button>
+        </div>
+    </div>
+
+    <script>
+        // Proteção contra cópia
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            document.getElementById('protectionModal').style.display = 'flex';
+        });
+
+        document.addEventListener('keydown', function(e) {
+            // Impedir Ctrl+C, Ctrl+U, Ctrl+S, etc.
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'c' || e.key === 'C' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+                document.getElementById('protectionModal').style.display = 'flex';
+            }
+            
+            // Impedir F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                document.getElementById('protectionModal').style.display = 'flex';
+            }
+        });
+
+        // Fechar modal
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('protectionModal').style.display = 'none';
+        });
+
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('protectionModal')) {
+                document.getElementById('protectionModal').style.display = 'none';
+            }
+        });
+
+        // Botões de exemplo
+        document.querySelectorAll('.btn-primary, .btn-accent').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Redirecionando para a página de compra... Em um site real, você seria direcionado para o checkout.');
+            });
+        });
+
+        // Adicionar marca d'água virtual
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                body::after {
+                    content: "BioReforço - Conteúdo Protegido";
+                    position: fixed;
+                    bottom: 10px;
+                    right: 10px;
+                    background: rgba(0,0,0,0.7);
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                    font-size: 0.8rem;
+                    z-index: 9999;
+                    pointer-events: none;
+                    opacity: 0.7;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
