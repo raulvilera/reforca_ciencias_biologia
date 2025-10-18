@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BioReforço - Reforço Escolar de Ciências e Biologia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2E7D32;
@@ -12,28 +13,43 @@
             --primary-light: #4CAF50;
             --secondary: #1565C0;
             --accent: #FF9800;
+            --accent-light: #FFB74D;
             --text-dark: #333;
             --text-light: #666;
             --background: #f9f9f9;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --card-bg: #ffffff;
+            --gradient-1: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            --gradient-2: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%);
+            --gradient-3: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+            --gradient-4: linear-gradient(135deg, #7B1FA2 0%, #BA68C8 100%);
+            --gradient-5: linear-gradient(135deg, #C2185B 0%, #F06292 100%);
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
+            --radius: 16px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background-color: var(--background);
             color: var(--text-dark);
             line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         /* Header */
@@ -45,6 +61,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
@@ -58,16 +75,20 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo h1 {
             font-size: 1.8rem;
             font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #E1F5FE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         nav ul {
@@ -80,11 +101,28 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
         }
 
         nav a:hover {
             color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         .auth-buttons {
@@ -93,12 +131,17 @@
         }
 
         .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             border: none;
+            font-family: 'Poppins', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-outline {
@@ -110,6 +153,8 @@
         .btn-outline:hover {
             background: var(--white);
             color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .btn-primary {
@@ -119,103 +164,176 @@
 
         .btn-primary:hover {
             background: #0D47A1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--gradient-1);
             color: var(--white);
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="0,0 1000,50 1000,100 0,100"/></svg>');
+            background-size: cover;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-accent {
             background: var(--accent);
             color: var(--white);
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             font-size: 1.1rem;
         }
 
         .btn-accent:hover {
             background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
         /* Grade de Séries */
         .grades {
-            padding: 4rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
 
         .grades-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .grade-card {
-            background: var(--white);
-            border-radius: 8px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: all 0.4s;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .grade-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
         .grade-header {
-            background: var(--primary);
+            background: var(--gradient-2);
             color: var(--white);
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grade-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         .grade-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .grade-content ul {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
         }
 
         .grade-content li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .grade-content li:last-child {
             border-bottom: none;
         }
 
+        .grade-content li i {
+            color: var(--primary);
+        }
+
         /* Módulos */
         .modules {
-            background: var(--white);
-            padding: 4rem 2rem;
+            background: var(--background);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .modules::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
         }
 
         .modules-container {
@@ -225,31 +343,34 @@
 
         .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .module-card {
-            background: var(--white);
-            border-radius: 8px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
-            border: 1px solid #e0e0e0;
+            transition: all 0.4s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .module-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
         .module-image {
-            height: 180px;
-            background-color: var(--primary-light);
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 3rem;
+            font-size: 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -262,57 +383,101 @@
             right: 0;
             background: rgba(0,0,0,0.7);
             color: white;
-            padding: 5px;
+            padding: 8px;
             font-size: 0.8rem;
             text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .module-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .module-content {
-            padding: 1.5rem;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .module-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: var(--primary-dark);
+            line-height: 1.3;
         }
 
         .module-description {
             color: var(--text-light);
-            margin-bottom: 1rem;
-            min-height: 80px;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .module-topics {
-            margin: 1rem 0;
-            padding-left: 1.2rem;
+            margin: 1.5rem 0;
+            padding-left: 0;
+            list-style: none;
         }
 
         .module-topics li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+
+        .module-topics li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .module-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
         }
 
         .module-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--secondary);
-            margin-bottom: 1rem;
+        }
+
+        .module-price small {
+            font-size: 1rem;
+            color: var(--text-light);
         }
 
         .copyright-notice {
             font-size: 0.8rem;
             color: var(--text-light);
-            margin-top: 1rem;
-            padding: 0.8rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
             background: #f5f5f5;
-            border-radius: 4px;
+            border-radius: 8px;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         /* Área de Materiais de Amostra */
         .sample-materials {
-            padding: 4rem 2rem;
-            background: var(--background);
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, var(--background) 0%, #f0f7ff 100%);
         }
 
         .sample-container {
@@ -322,30 +487,39 @@
 
         .sample-card {
             background: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .sample-card:hover {
+            transform: translateY(-5px);
         }
 
         .sample-card h3 {
             color: var(--primary-dark);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .sample-content {
             background: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin: 1rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
             border-left: 4px solid var(--accent);
         }
 
         .sample-content h4 {
             color: var(--secondary);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         .references {
@@ -355,15 +529,18 @@
         }
 
         .references h4 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Footer */
         footer {
             background: var(--primary-dark);
             color: var(--white);
-            padding: 3rem 2rem;
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-container {
@@ -371,12 +548,24 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
         }
 
         .footer-section ul {
@@ -385,6 +574,9 @@
 
         .footer-section li {
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .footer-section a {
@@ -399,18 +591,23 @@
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #ccc;
         }
 
         .protection-notice {
             text-align: center;
-            background: #333;
+            background: rgba(0,0,0,0.2);
             color: white;
-            padding: 0.5rem;
-            font-size: 0.8rem;
+            padding: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
         }
 
         /* Modal */
@@ -425,55 +622,87 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
             background: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 3rem;
+            border-radius: var(--radius);
             max-width: 500px;
             width: 90%;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
         }
 
         .modal h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--primary-dark);
+            font-size: 1.5rem;
         }
 
         .modal p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .close-modal {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
         }
 
         /* Responsividade */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 1.2rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
 
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .module-footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
             }
         }
     </style>
@@ -496,8 +725,8 @@
                 </ul>
             </nav>
             <div class="auth-buttons">
-                <button class="btn btn-outline">Área do Aluno</button>
-                <button class="btn btn-primary">Comprar Módulo</button>
+                <button class="btn btn-outline"><i class="fas fa-user"></i> Área do Aluno</button>
+                <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar Módulo</button>
             </div>
         </div>
     </header>
@@ -507,7 +736,7 @@
         <div class="hero-content">
             <h2>Reforço Escolar de Ciências e Biologia</h2>
             <p>Materiais didáticos exclusivos e protegidos para estudantes do 6º ano ao Ensino Médio. Conteúdo original com referências acadêmicas.</p>
-            <button class="btn btn-accent">Ver Módulos Disponíveis</button>
+            <button class="btn btn-accent floating"><i class="fas fa-rocket"></i> Ver Módulos Disponíveis</button>
         </div>
     </section>
 
@@ -522,12 +751,12 @@
                 </div>
                 <div class="grade-content">
                     <ul>
-                        <li><strong>6º Ano</strong> - Ciências</li>
-                        <li><strong>7º Ano</strong> - Ciências</li>
-                        <li><strong>8º Ano</strong> - Ciências</li>
-                        <li><strong>9º Ano</strong> - Ciências</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>6º Ano</strong> - Ciências</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>7º Ano</strong> - Ciências</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>8º Ano</strong> - Ciências</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>9º Ano</strong> - Ciências</li>
                     </ul>
-                    <button class="btn btn-primary">Ver Materiais</button>
+                    <button class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Materiais</button>
                 </div>
             </div>
 
@@ -538,11 +767,11 @@
                 </div>
                 <div class="grade-content">
                     <ul>
-                        <li><strong>1ª Série</strong> - Biologia</li>
-                        <li><strong>2ª Série</strong> - Biologia</li>
-                        <li><strong>3ª Série</strong> - Biologia</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>1ª Série</strong> - Biologia</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>2ª Série</strong> - Biologia</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>3ª Série</strong> - Biologia</li>
                     </ul>
-                    <button class="btn btn-primary">Ver Materiais</button>
+                    <button class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Materiais</button>
                 </div>
             </div>
         </div>
@@ -555,9 +784,10 @@
             <div class="modules-grid">
                 <!-- Módulo 6º Ano -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-1);">
                         🌍
                     </div>
+                    <div class="module-badge">Mais Vendido</div>
                     <div class="module-content">
                         <h3 class="module-title">6º Ano - Terra e Universo</h3>
                         <p class="module-description">Compreenda nosso planeta, sistema solar e universo com explicações claras e atividades práticas.</p>
@@ -567,8 +797,10 @@
                             <li>Fenômenos Atmosféricos</li>
                             <li>Estações do Ano</li>
                         </ul>
-                        <div class="module-price">R$ 24,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>24,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
@@ -577,7 +809,7 @@
 
                 <!-- Módulo 7º Ano -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-2);">
                         🔬
                     </div>
                     <div class="module-content">
@@ -589,8 +821,10 @@
                             <li>Classificação Taxonômica</li>
                             <li>Vírus, Bactérias e Protistas</li>
                         </ul>
-                        <div class="module-price">R$ 27,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>27,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
@@ -599,7 +833,7 @@
 
                 <!-- Módulo 8º Ano -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-3);">
                         ❤️
                     </div>
                     <div class="module-content">
@@ -611,8 +845,10 @@
                             <li>Sistema Circulatório</li>
                             <li>Saúde e Prevenção de Doenças</li>
                         </ul>
-                        <div class="module-price">R$ 29,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>29,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
@@ -621,7 +857,7 @@
 
                 <!-- Módulo 9º Ano -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-4);">
                         ⚡
                     </div>
                     <div class="module-content">
@@ -633,8 +869,10 @@
                             <li>Fotossíntese e Respiração</li>
                             <li>Genética Básica</li>
                         </ul>
-                        <div class="module-price">R$ 32,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>32,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
@@ -643,9 +881,10 @@
 
                 <!-- Módulo 1ª Série EM -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-5);">
                         🧬
                     </div>
+                    <div class="module-badge">Novo</div>
                     <div class="module-content">
                         <h3 class="module-title">1ª Série - Biologia Celular</h3>
                         <p class="module-description">Aprofunde-se na estrutura e funcionamento das células, base da vida.</p>
@@ -655,8 +894,10 @@
                             <li>Divisão Celular (Mitose e Meiose)</li>
                             <li>DNA e Síntese Proteica</li>
                         </ul>
-                        <div class="module-price">R$ 34,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>34,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
@@ -665,7 +906,7 @@
 
                 <!-- Módulo 2ª Série EM -->
                 <div class="module-card">
-                    <div class="module-image">
+                    <div class="module-image" style="background: var(--gradient-1);">
                         🌱
                     </div>
                     <div class="module-content">
@@ -677,73 +918,14 @@
                             <li>Botânica e Fisiologia Vegetal</li>
                             <li>Zoologia e Classificação Animal</li>
                         </ul>
-                        <div class="module-price">R$ 37,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
+                        <div class="module-footer">
+                            <div class="module-price">R$ <span>37,90</span></div>
+                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                        </div>
                         <div class="copyright-notice">
                             <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
                         </div>
                     </div>
-                </div>
-
-                <!-- Módulo 3ª Série EM -->
-                <div class="module-card">
-                    <div class="module-image">
-                        🧪
-                    </div>
-                    <div class="module-content">
-                        <h3 class="module-title">3ª Série - Biologia Avançada e Evolução</h3>
-                        <p class="module-description">Prepare-se para vestibulares com genética, evolução e ecologia.</p>
-                        <ul class="module-topics">
-                            <li>Genética e Biotecnologia</li>
-                            <li>Evolução e Seleção Natural</li>
-                            <li>Ecologia e Sustentabilidade</li>
-                            <li>Preparação para Vestibulares</li>
-                        </ul>
-                        <div class="module-price">R$ 39,90</div>
-                        <button class="btn btn-primary">Comprar Módulo</button>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Amostras de Conteúdo -->
-    <section class="sample-materials" id="samples">
-        <div class="sample-container">
-            <h2 class="section-title">Amostra de Conteúdo Original</h2>
-            
-            <div class="sample-card">
-                <h3>6º Ano - Amostra: Sistema Solar</h3>
-                <div class="sample-content">
-                    <h4>Os Planetas do Sistema Solar</h4>
-                    <p>O Sistema Solar é composto por oito planetas que orbitam ao redor do Sol. Estes são divididos em planetas rochosos (Mercúrio, Vênus, Terra e Marte) e gasosos (Júpiter, Saturno, Urano e Netuno).</p>
-                    <p>Cada planeta possui características únicas relacionadas à sua composição, atmosfera, satélites naturais e condições de temperatura.</p>
-                </div>
-                <div class="references">
-                    <h4>Referências Bibliográficas:</h4>
-                    <ul>
-                        <li>CARMO, B. H. do. <em>Ciências: Entender e Descobrir</em>. São Paulo: Editora do Brasil, 2021.</li>
-                        <li>NASA. Solar System Exploration. Disponível em: https://solarsystem.nasa.gov</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="sample-card">
-                <h3>1ª Série EM - Amostra: Células Eucariontes</h3>
-                <div class="sample-content">
-                    <h4>Estrutura das Células Eucariontes</h4>
-                    <p>As células eucariontes caracterizam-se pela presença de núcleo individualizado e diversas organelas com funções especializadas. A membrana plasmática controla a entrada e saída de substâncias, enquanto o citoplasma abriga as organelas.</p>
-                    <p>As mitocôndrias são responsáveis pela produção de energia, o retículo endoplasmático atua na síntese de proteínas e lipídios, e o complexo golgiense processa e encaminha substâncias para diferentes partes da célula.</p>
-                </div>
-                <div class="references">
-                    <h4>Referências Bibliográficas:</h4>
-                    <ul>
-                        <li>AMABIS, J. M.; MARTHO, G. R. <em>Biologia das Células</em>. São Paulo: Moderna, 2020.</li>
-                        <li>LOPES, S.; ROSSO, S. <em>Bio - Volume 1</em>. São Paulo: Saraiva, 2019.</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -759,10 +941,10 @@
             <div class="footer-section">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#grades">Séries</a></li>
-                    <li><a href="#modules">Módulos</a></li>
-                    <li><a href="#samples">Amostras</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#home">Início</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#grades">Séries</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#modules">Módulos</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#samples">Amostras</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -843,12 +1025,13 @@
                     right: 10px;
                     background: rgba(0,0,0,0.7);
                     color: white;
-                    padding: 5px 10px;
-                    border-radius: 4px;
+                    padding: 8px 12px;
+                    border-radius: 20px;
                     font-size: 0.8rem;
                     z-index: 9999;
                     pointer-events: none;
                     opacity: 0.7;
+                    backdrop-filter: blur(5px);
                 }
             `;
             document.head.appendChild(style);
