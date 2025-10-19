@@ -474,68 +474,6 @@
             gap: 8px;
         }
 
-        /* Área de Materiais de Amostra */
-        .sample-materials {
-            padding: 6rem 2rem;
-            background: linear-gradient(to bottom, var(--background) 0%, #f0f7ff 100%);
-        }
-
-        .sample-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .sample-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .sample-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .sample-card h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-light);
-            padding-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sample-content {
-            background: #f9f9f9;
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .sample-content h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .references {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .references h4 {
-            margin-bottom: 0.8rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         /* Footer */
         footer {
             background: var(--primary-dark);
@@ -663,6 +601,283 @@
             transform: translateY(-2px);
         }
 
+        /* Checkout Container */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+        }
+
+        @media (max-width: 968px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Checkout Steps */
+        .checkout-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .checkout-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e0e0e0;
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: var(--accent);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Checkout Form */
+        .checkout-form {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin-top: 2rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: rgba(46, 125, 50, 0.05);
+        }
+
+        .payment-radio {
+            margin-right: 1rem;
+        }
+
+        .payment-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+
+        .payment-details {
+            flex-grow: 1;
+        }
+
+        .payment-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .payment-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .item-grade {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .summary-total {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .total-price {
+            color: var(--primary);
+        }
+
+        /* Security Badges */
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background: #f5f5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
         /* Animações */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -672,6 +887,15 @@
 
         .floating {
             animation: float 5s ease-in-out infinite;
+        }
+
+        /* Páginas */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Responsividade */
@@ -704,6 +928,23 @@
                 gap: 1.5rem;
                 align-items: flex-start;
             }
+
+            .checkout-container {
+                padding: 0 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-steps {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .step-label {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -717,219 +958,428 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#grades">Séries</a></li>
-                    <li><a href="#modules">Módulos</a></li>
-                    <li><a href="#samples">Amostras</a></li>
-                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#" onclick="showPage('home')">Início</a></li>
+                    <li><a href="#" onclick="showPage('grades')">Séries</a></li>
+                    <li><a href="#" onclick="showPage('modules')">Módulos</a></li>
+                    <li><a href="#" onclick="showPage('about')">Sobre</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
                 <button class="btn btn-outline"><i class="fas fa-user"></i> Área do Aluno</button>
-                <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar Módulo</button>
+                <button class="btn btn-primary" onclick="showPage('checkout')"><i class="fas fa-shopping-cart"></i> Finalizar Compra</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h2>Reforço Escolar de Ciências e Biologia</h2>
-            <p>Materiais didáticos exclusivos e protegidos para estudantes do 6º ano ao Ensino Médio. Conteúdo original com referências acadêmicas.</p>
-            <button class="btn btn-accent floating"><i class="fas fa-rocket"></i> Ver Módulos Disponíveis</button>
-        </div>
-    </section>
-
-    <!-- Grade de Séries -->
-    <section class="grades" id="grades">
-        <h2 class="section-title">Séries Atendidas</h2>
-        <div class="grades-grid">
-            <!-- Ensino Fundamental II -->
-            <div class="grade-card">
-                <div class="grade-header">
-                    <h3>Ensino Fundamental II</h3>
-                </div>
-                <div class="grade-content">
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> <strong>6º Ano</strong> - Ciências</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>7º Ano</strong> - Ciências</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>8º Ano</strong> - Ciências</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>9º Ano</strong> - Ciências</li>
-                    </ul>
-                    <button class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Materiais</button>
-                </div>
+    <!-- Página Inicial -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Reforço Escolar de Ciências e Biologia</h2>
+                <p>Materiais didáticos exclusivos e protegidos para estudantes do 6º ano ao Ensino Médio. Conteúdo original com referências acadêmicas.</p>
+                <button class="btn btn-accent floating" onclick="showPage('modules')"><i class="fas fa-rocket"></i> Ver Módulos Disponíveis</button>
             </div>
+        </section>
 
-            <!-- Ensino Médio -->
-            <div class="grade-card">
-                <div class="grade-header">
-                    <h3>Ensino Médio</h3>
-                </div>
-                <div class="grade-content">
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> <strong>1ª Série</strong> - Biologia</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>2ª Série</strong> - Biologia</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>3ª Série</strong> - Biologia</li>
-                    </ul>
-                    <button class="btn btn-primary"><i class="fas fa-book-open"></i> Ver Materiais</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Módulos -->
-    <section class="modules" id="modules">
-        <div class="modules-container">
-            <h2 class="section-title">Módulos Disponíveis</h2>
-            <div class="modules-grid">
-                <!-- Módulo 6º Ano -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-1);">
-                        🌍
+        <!-- Grade de Séries -->
+        <section class="grades">
+            <h2 class="section-title">Séries Atendidas</h2>
+            <div class="grades-grid">
+                <!-- Ensino Fundamental II -->
+                <div class="grade-card">
+                    <div class="grade-header">
+                        <h3>Ensino Fundamental II</h3>
                     </div>
-                    <div class="module-badge">Mais Vendido</div>
-                    <div class="module-content">
-                        <h3 class="module-title">6º Ano - Terra e Universo</h3>
-                        <p class="module-description">Compreenda nosso planeta, sistema solar e universo com explicações claras e atividades práticas.</p>
-                        <ul class="module-topics">
-                            <li>Sistema Solar e Planetas</li>
-                            <li>Camadas da Terra</li>
-                            <li>Fenômenos Atmosféricos</li>
-                            <li>Estações do Ano</li>
+                    <div class="grade-content">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>6º Ano</strong> - Ciências</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>7º Ano</strong> - Ciências</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>8º Ano</strong> - Ciências</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>9º Ano</strong> - Ciências</li>
                         </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>24,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
+                        <button class="btn btn-primary" onclick="showPage('modules')"><i class="fas fa-book-open"></i> Ver Materiais</button>
                     </div>
                 </div>
 
-                <!-- Módulo 7º Ano -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-2);">
-                        🔬
+                <!-- Ensino Médio -->
+                <div class="grade-card">
+                    <div class="grade-header">
+                        <h3>Ensino Médio</h3>
                     </div>
-                    <div class="module-content">
-                        <h3 class="module-title">7º Ano - Seres Vivos e Classificação</h3>
-                        <p class="module-description">Explore a diversidade da vida e aprenda a classificar os seres vivos de forma sistemática.</p>
-                        <ul class="module-topics">
-                            <li>Características dos Seres Vivos</li>
-                            <li>Reinos Biológicos</li>
-                            <li>Classificação Taxonômica</li>
-                            <li>Vírus, Bactérias e Protistas</li>
+                    <div class="grade-content">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>1ª Série</strong> - Biologia</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>2ª Série</strong> - Biologia</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>3ª Série</strong> - Biologia</li>
                         </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>27,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo 8º Ano -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-3);">
-                        ❤️
-                    </div>
-                    <div class="module-content">
-                        <h3 class="module-title">8º Ano - Corpo Humano e Saúde</h3>
-                        <p class="module-description">Conheça os sistemas do corpo humano, suas funções e como manter a saúde.</p>
-                        <ul class="module-topics">
-                            <li>Sistema Digestório e Nutrição</li>
-                            <li>Sistema Respiratório</li>
-                            <li>Sistema Circulatório</li>
-                            <li>Saúde e Prevenção de Doenças</li>
-                        </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>29,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo 9º Ano -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-4);">
-                        ⚡
-                    </div>
-                    <div class="module-content">
-                        <h3 class="module-title">9º Ano - Química da Vida</h3>
-                        <p class="module-description">Entenda os fundamentos químicos dos seres vivos e as transformações da matéria.</p>
-                        <ul class="module-topics">
-                            <li>Átomos, Moléculas e Células</li>
-                            <li>Substâncias Orgânicas e Inorgânicas</li>
-                            <li>Fotossíntese e Respiração</li>
-                            <li>Genética Básica</li>
-                        </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>32,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo 1ª Série EM -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-5);">
-                        🧬
-                    </div>
-                    <div class="module-badge">Novo</div>
-                    <div class="module-content">
-                        <h3 class="module-title">1ª Série - Biologia Celular</h3>
-                        <p class="module-description">Aprofunde-se na estrutura e funcionamento das células, base da vida.</p>
-                        <ul class="module-topics">
-                            <li>Estrutura e Função Celular</li>
-                            <li>Metabolismo Energético</li>
-                            <li>Divisão Celular (Mitose e Meiose)</li>
-                            <li>DNA e Síntese Proteica</li>
-                        </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>34,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Módulo 2ª Série EM -->
-                <div class="module-card">
-                    <div class="module-image" style="background: var(--gradient-1);">
-                        🌱
-                    </div>
-                    <div class="module-content">
-                        <h3 class="module-title">2ª Série - Biologia dos Organismos</h3>
-                        <p class="module-description">Estude anatomia, fisiologia e a diversidade dos seres vivos.</p>
-                        <ul class="module-topics">
-                            <li>Histologia Animal e Vegetal</li>
-                            <li>Sistemas do Corpo Humano</li>
-                            <li>Botânica e Fisiologia Vegetal</li>
-                            <li>Zoologia e Classificação Animal</li>
-                        </ul>
-                        <div class="module-footer">
-                            <div class="module-price">R$ <span>37,90</span></div>
-                            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Comprar</button>
-                        </div>
-                        <div class="copyright-notice">
-                            <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
-                        </div>
+                        <button class="btn btn-primary" onclick="showPage('modules')"><i class="fas fa-book-open"></i> Ver Materiais</button>
                     </div>
                 </div>
             </div>
+        </section>
+    </div>
+
+    <!-- Página de Módulos -->
+    <div id="modules" class="page">
+        <section class="modules">
+            <div class="modules-container">
+                <h2 class="section-title">Módulos Disponíveis</h2>
+                <div class="modules-grid">
+                    <!-- Módulo 6º Ano -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-1);">
+                            🌍
+                        </div>
+                        <div class="module-badge">Mais Vendido</div>
+                        <div class="module-content">
+                            <h3 class="module-title">6º Ano - Terra e Universo</h3>
+                            <p class="module-description">Compreenda nosso planeta, sistema solar e universo com explicações claras e atividades práticas.</p>
+                            <ul class="module-topics">
+                                <li>Sistema Solar e Planetas</li>
+                                <li>Camadas da Terra</li>
+                                <li>Fenômenos Atmosféricos</li>
+                                <li>Estações do Ano</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>24,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(1, '6º Ano - Terra e Universo', 24.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 7º Ano -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-2);">
+                            🔬
+                        </div>
+                        <div class="module-content">
+                            <h3 class="module-title">7º Ano - Seres Vivos e Classificação</h3>
+                            <p class="module-description">Explore a diversidade da vida e aprenda a classificar os seres vivos de forma sistemática.</p>
+                            <ul class="module-topics">
+                                <li>Características dos Seres Vivos</li>
+                                <li>Reinos Biológicos</li>
+                                <li>Classificação Taxonômica</li>
+                                <li>Vírus, Bactérias e Protistas</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>27,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(2, '7º Ano - Seres Vivos e Classificação', 27.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 8º Ano -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-3);">
+                            ❤️
+                        </div>
+                        <div class="module-content">
+                            <h3 class="module-title">8º Ano - Corpo Humano e Saúde</h3>
+                            <p class="module-description">Conheça os sistemas do corpo humano, suas funções e como manter a saúde.</p>
+                            <ul class="module-topics">
+                                <li>Sistema Digestório e Nutrição</li>
+                                <li>Sistema Respiratório</li>
+                                <li>Sistema Circulatório</li>
+                                <li>Saúde e Prevenção de Doenças</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>29,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(3, '8º Ano - Corpo Humano e Saúde', 29.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 9º Ano -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-4);">
+                            ⚡
+                        </div>
+                        <div class="module-content">
+                            <h3 class="module-title">9º Ano - Química da Vida</h3>
+                            <p class="module-description">Entenda os fundamentos químicos dos seres vivos e as transformações da matéria.</p>
+                            <ul class="module-topics">
+                                <li>Átomos, Moléculas e Células</li>
+                                <li>Substâncias Orgânicas e Inorgânicas</li>
+                                <li>Fotossíntese e Respiração</li>
+                                <li>Genética Básica</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>32,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(4, '9º Ano - Química da Vida', 32.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 1ª Série EM -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-5);">
+                            🧬
+                        </div>
+                        <div class="module-badge">Novo</div>
+                        <div class="module-content">
+                            <h3 class="module-title">1ª Série - Biologia Celular</h3>
+                            <p class="module-description">Aprofunde-se na estrutura e funcionamento das células, base da vida.</p>
+                            <ul class="module-topics">
+                                <li>Estrutura e Função Celular</li>
+                                <li>Metabolismo Energético</li>
+                                <li>Divisão Celular (Mitose e Meiose)</li>
+                                <li>DNA e Síntese Proteica</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>34,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(5, '1ª Série - Biologia Celular', 34.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 2ª Série EM -->
+                    <div class="module-card">
+                        <div class="module-image" style="background: var(--gradient-1);">
+                            🌱
+                        </div>
+                        <div class="module-content">
+                            <h3 class="module-title">2ª Série - Biologia dos Organismos</h3>
+                            <p class="module-description">Estude anatomia, fisiologia e a diversidade dos seres vivos.</p>
+                            <ul class="module-topics">
+                                <li>Histologia Animal e Vegetal</li>
+                                <li>Sistemas do Corpo Humano</li>
+                                <li>Botânica e Fisiologia Vegetal</li>
+                                <li>Zoologia e Classificação Animal</li>
+                            </ul>
+                            <div class="module-footer">
+                                <div class="module-price">R$ <span>37,90</span></div>
+                                <button class="btn btn-primary" onclick="addToCart(6, '2ª Série - Biologia dos Organismos', 37.90)"><i class="fas fa-shopping-cart"></i> Comprar</button>
+                            </div>
+                            <div class="copyright-notice">
+                                <i class="fas fa-lock"></i> Conteúdo protegido por direitos autorais
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Página de Checkout -->
+    <div id="checkout" class="page">
+        <div class="checkout-container">
+            <!-- Checkout Form -->
+            <div class="checkout-main">
+                <!-- Checkout Steps -->
+                <div class="checkout-steps">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Carrinho</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Pagamento</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmação</div>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <h2 class="form-title"><i class="fas fa-user"></i> Informações Pessoais</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <div class="input-group">
+                            <input type="text" id="name" class="form-control" placeholder="Digite seu nome completo">
+                            <i class="fas fa-user input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <div class="input-group">
+                            <input type="email" id="email" class="form-control" placeholder="seu@email.com">
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <div class="input-group">
+                            <input type="tel" id="phone" class="form-control" placeholder="(11) 99999-9999">
+                            <i class="fas fa-phone input-icon"></i>
+                        </div>
+                    </div>
+
+                    <h2 class="form-title" style="margin-top: 2.5rem;"><i class="fas fa-credit-card"></i> Método de Pagamento</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-option selected" onclick="selectPayment(this)">
+                            <div class="payment-radio">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="payment-icon">
+                                <i class="fab fa-cc-paypal"></i>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-title">PayPal</div>
+                                <div class="payment-description">Pague com PayPal ou cartão de crédito</div>
+                            </div>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPayment(this)">
+                            <div class="payment-radio">
+                                <i class="far fa-circle"></i>
+                            </div>
+                            <div class="payment-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-title">Cartão de Crédito</div>
+                                <div class="payment-description">Visa, Mastercard, Elo, American Express</div>
+                            </div>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPayment(this)">
+                            <div class="payment-radio">
+                                <i class="far fa-circle"></i>
+                            </div>
+                            <div class="payment-icon">
+                                <i class="fas fa-barcode"></i>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-title">Boleto Bancário</div>
+                                <div class="payment-description">Pagamento em até 3 dias úteis</div>
+                            </div>
+                        </div>
+
+                        <div class="payment-option" onclick="selectPayment(this)">
+                            <div class="payment-radio">
+                                <i class="far fa-circle"></i>
+                            </div>
+                            <div class="payment-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="payment-details">
+                                <div class="payment-title">PIX</div>
+                                <div class="payment-description">Pagamento instantâneo</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-number">Número do Cartão</label>
+                        <div class="input-group">
+                            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+                            <i class="fas fa-credit-card input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Validade</label>
+                            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvc">CVC</label>
+                            <input type="text" id="card-cvc" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-name">Nome no Cartão</label>
+                        <input type="text" id="card-name" class="form-control" placeholder="Como está no cartão">
+                    </div>
+
+                    <div class="security-badges">
+                        <div class="badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Pagamento Seguro</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Dados Protegidos</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="processPayment()">
+                        <i class="fas fa-lock"></i> Finalizar Compra
+                    </button>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2 class="summary-title"><i class="fas fa-shopping-bag"></i> Resumo do Pedido</h2>
+                
+                <div id="cart-items">
+                    <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+                </div>
+
+                <div class="summary-total">
+                    <div>Total</div>
+                    <div class="total-price" id="total-price">R$ 0,00</div>
+                </div>
+
+                <div class="security-info">
+                    <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1.5rem; text-align: center;">
+                        <i class="fas fa-lock"></i> Sua compra está protegida por criptografia SSL
+                    </p>
+                </div>
+
+                <button class="btn btn-outline" onclick="showPage('modules')">
+                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                </button>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Página Sobre -->
+    <div id="about" class="page">
+        <section class="modules">
+            <div class="modules-container">
+                <h2 class="section-title">Sobre o BioReforço</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        O BioReforço é uma plataforma especializada em reforço escolar de Ciências e Biologia, 
+                        criada para oferecer materiais didáticos de alta qualidade para estudantes do 6º ano 
+                        do Ensino Fundamental à 3ª série do Ensino Médio.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">🧬</div>
+                            <h3 style="margin-bottom: 1rem;">Conteúdo Original</h3>
+                            <p>Todos os materiais são desenvolvidos por especialistas em educação, garantindo conteúdo atualizado e de qualidade.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">📚</div>
+                            <h3 style="margin-bottom: 1rem;">Organizado por Série</h3>
+                            <p>Conteúdo organizado de acordo com a grade curricular de cada ano/série, facilitando o aprendizado.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">🔒</div>
+                            <h3 style="margin-bottom: 1rem;">Conteúdo Protegido</h3>
+                            <p>Seus materiais estão seguros com sistemas de proteção contra cópia não autorizada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -941,10 +1391,10 @@
             <div class="footer-section">
                 <h3>Links Rápidos</h3>
                 <ul>
-                    <li><i class="fas fa-chevron-right"></i> <a href="#home">Início</a></li>
-                    <li><i class="fas fa-chevron-right"></i> <a href="#grades">Séries</a></li>
-                    <li><i class="fas fa-chevron-right"></i> <a href="#modules">Módulos</a></li>
-                    <li><i class="fas fa-chevron-right"></i> <a href="#samples">Amostras</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#" onclick="showPage('home')">Início</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#" onclick="showPage('grades')">Séries</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#" onclick="showPage('modules')">Módulos</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="#" onclick="showPage('about')">Sobre</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -964,54 +1414,173 @@
         </div>
     </footer>
 
-    <!-- Modal de Proteção -->
-    <div class="modal" id="protectionModal">
+    <!-- Modal de Confirmação -->
+    <div class="modal" id="confirmationModal">
         <div class="modal-content">
-            <h3>Conteúdo Protegido</h3>
-            <p>Os materiais do BioReforço são protegidos por direitos autorais e não podem ser copiados, distribuídos ou reproduzidos sem autorização.</p>
-            <p>Para adquirir nossos módulos, entre em contato ou faça sua compra através do site.</p>
-            <button class="close-modal">Entendi</button>
+            <div style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Compra Realizada com Sucesso!</h3>
+            <p>Seu pedido foi processado e os módulos já estão disponíveis em sua área do aluno.</p>
+            <p>Enviamos um e-mail de confirmação com todos os detalhes.</p>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="btn btn-outline" onclick="closeModal()">Continuar Comprando</button>
+                <button class="btn btn-primary" onclick="goToAccount()">Acessar Área do Aluno</button>
+            </div>
         </div>
     </div>
 
     <script>
+        // Carrinho de compras
+        let cart = [];
+
+        // Mostrar página específica
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Se for a página de checkout, atualizar o resumo do pedido
+            if (pageId === 'checkout') {
+                updateOrderSummary();
+            }
+            
+            // Scroll para o topo
+            window.scrollTo(0, 0);
+        }
+
+        // Adicionar item ao carrinho
+        function addToCart(id, name, price) {
+            // Verificar se o item já está no carrinho
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            // Mostrar mensagem de sucesso
+            alert(`${name} foi adicionado ao carrinho!`);
+            
+            // Atualizar o resumo do pedido se estiver na página de checkout
+            if (document.getElementById('checkout').classList.contains('active')) {
+                updateOrderSummary();
+            }
+        }
+
+        // Atualizar resumo do pedido
+        function updateOrderSummary() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            
+            // Limpar container
+            cartItemsContainer.innerHTML = '';
+            
+            let total = 0;
+            
+            // Adicionar itens ao resumo
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'summary-item';
+                itemElement.innerHTML = `
+                    <div class="item-image">
+                        ${getModuleIcon(item.id)}
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-grade">Quantidade: ${item.quantity}</div>
+                    </div>
+                    <div class="item-price">R$ ${itemTotal.toFixed(2).replace('.', ',')}</div>
+                `;
+                
+                cartItemsContainer.appendChild(itemElement);
+            });
+            
+            // Atualizar total
+            totalPriceElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            
+            // Se o carrinho estiver vazio, mostrar mensagem
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-light);">Seu carrinho está vazio</p>';
+            }
+        }
+
+        // Obter ícone do módulo
+        function getModuleIcon(moduleId) {
+            const icons = {
+                1: '🌍',
+                2: '🔬',
+                3: '❤️',
+                4: '⚡',
+                5: '🧬',
+                6: '🌱'
+            };
+            
+            return icons[moduleId] || '📚';
+        }
+
+        // Selecionar método de pagamento
+        function selectPayment(element) {
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+                option.querySelector('.payment-radio i').className = 'far fa-circle';
+            });
+            
+            element.classList.add('selected');
+            element.querySelector('.payment-radio i').className = 'fas fa-check-circle';
+        }
+
+        // Processar pagamento
+        function processPayment() {
+            // Validação básica
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !email) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio. Adicione pelo menos um módulo antes de finalizar a compra.');
+                return;
+            }
+            
+            // Simular processamento
+            document.getElementById('confirmationModal').style.display = 'flex';
+        }
+
+        // Fechar modal
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
+
+        // Ir para a área do aluno
+        function goToAccount() {
+            alert('Redirecionando para a área do aluno...');
+            closeModal();
+            // Em um site real, redirecionaria para a área do aluno
+        }
+
         // Proteção contra cópia
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            document.getElementById('protectionModal').style.display = 'flex';
         });
 
         document.addEventListener('keydown', function(e) {
-            // Impedir Ctrl+C, Ctrl+U, Ctrl+S, etc.
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'c' || e.key === 'C' || e.key === 's' || e.key === 'S')) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'c' || e.key === 'C')) {
                 e.preventDefault();
-                document.getElementById('protectionModal').style.display = 'flex';
             }
-            
-            // Impedir F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-                document.getElementById('protectionModal').style.display = 'flex';
-            }
-        });
-
-        // Fechar modal
-        document.querySelector('.close-modal').addEventListener('click', function() {
-            document.getElementById('protectionModal').style.display = 'none';
-        });
-
-        // Fechar modal ao clicar fora
-        window.addEventListener('click', function(e) {
-            if (e.target === document.getElementById('protectionModal')) {
-                document.getElementById('protectionModal').style.display = 'none';
-            }
-        });
-
-        // Botões de exemplo
-        document.querySelectorAll('.btn-primary, .btn-accent').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('Redirecionando para a página de compra... Em um site real, você seria direcionado para o checkout.');
-            });
         });
 
         // Adicionar marca d'água virtual
